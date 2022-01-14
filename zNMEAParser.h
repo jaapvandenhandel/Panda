@@ -59,7 +59,6 @@ private:
   typedef void (*NMEAHandler)(void);
   typedef struct { char mToken[6]; NMEAHandler mHandler; } NMEAHandlerEntry;
   typedef enum { INIT, SENT, ARG, CRCH, CRCL, CRLFCR, CRLFLF } State;
-
 public:
   /*
    * maximum sentence size is 82 including the starting '$' and the <cr><lf>
@@ -67,7 +66,7 @@ public:
    * are not bufferized, 82 - 6 + 1 = 77 chars  are enough.
    * is enough.
    */
-  static const uint8_t kSentenceMaxSize = 77;
+  static const uint8_t kSentenceMaxSize = 90;
 
 private:
   /*
