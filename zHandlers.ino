@@ -206,6 +206,40 @@ void CalculateChecksum(void)
     strcat(nme,hex2);
 }
 
+/*
+$PANDA
+(1) Time of fix
+
+position
+(2,3) 4807.038,N Latitude 48 deg 07.038' N
+(4,5) 01131.000,E Longitude 11 deg 31.000' E
+
+(6) 1 Fix quality:
+    0 = invalid
+    1 = GPS fix(SPS)
+    2 = DGPS fix
+    3 = PPS fix
+    4 = Real Time Kinematic
+    5 = Float RTK
+    6 = estimated(dead reckoning)(2.3 feature)
+    7 = Manual input mode
+    8 = Simulation mode
+(7) Number of satellites being tracked
+(8) 0.9 Horizontal dilution of position
+(9) 545.4 Altitude (ALWAYS in Meters, above mean sea level)
+(10) 1.2 time in seconds since last DGPS update
+(11) Speed in knots
+
+FROM IMU:
+(12) Heading in degrees
+(13) Roll angle in degrees(positive roll = right leaning - right down, left up)
+
+(14) Pitch angle in degrees(Positive pitch = nose up)
+(15) Yaw Rate in Degrees / second
+
+* CHKSUM
+*/
+
 
 /*
 $GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M ,  ,*47
