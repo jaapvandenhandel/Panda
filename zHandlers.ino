@@ -87,28 +87,49 @@ void imuHandler()
 {
     int16_t temp = 0;
 
-    //the heading x10
-    Wire.beginTransmission(CMPS14_ADDRESS);
-    Wire.write(0x02);
-    Wire.endTransmission();
+    if (useCMPS)
+    {
+        //the heading x10
+        Wire.beginTransmission(CMPS14_ADDRESS);
+        Wire.write(0x02);
+        Wire.endTransmission();
 
-    Wire.requestFrom(CMPS14_ADDRESS, 3);
-    while (Wire.available() < 3);
+        Wire.requestFrom(CMPS14_ADDRESS, 3);
+        while (Wire.available() < 3);
 
-    temp = Wire.read() << 8 | Wire.read();
-    itoa(temp, imuHeading, 10);
+        temp = Wire.read() << 8 | Wire.read();
+        itoa(temp, imuHeading, 10);
 
-    //3rd byte pitch
-    int8_t pitch = Wire.read();
-    itoa(pitch, imuPitch, 10);
+        //3rd byte pitch
+        int8_t pitch = Wire.read();
+        itoa(pitch, imuPitch, 10);
 
-    //the roll x10
-    temp = (int16_t)rollSum;
-    itoa(temp, imuRoll, 10);
+        //the roll x10
+        temp = (int16_t)rollSum;
+        itoa(temp, imuRoll, 10);
 
-    //YawRate
-    temp = (int16_t)gyroSum;
-    itoa(temp, imuYawRate, 10);
+        //YawRate
+        temp = (int16_t)gyroSum;
+        itoa(temp, imuYawRate, 10);
+    }
+    else if (useBNO08x)
+    {
+        //Heading
+        temp = bno08xHeading10x;
+        itoa(temp, imuHeading, 10);
+
+        //the pitch x10
+        temp = (int16_t)pitchSum;
+        itoa(pitch, imuPitch, 10);
+
+        //the roll x10
+        temp = (int16_t)rollSum;
+        itoa(temp, imuRoll, 10);
+
+        //YawRate
+        temp = (int16_t)gyroSum;
+        itoa(temp, imuYawRate, 10);
+    }
 }
 
 void BuildPANDA(void)

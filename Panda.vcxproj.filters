@@ -26,5 +26,13 @@
     <ClInclude Include="zNMEAParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BNO08x_AOG.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BNO08x_AOG.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
